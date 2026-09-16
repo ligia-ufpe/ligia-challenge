@@ -526,11 +526,35 @@ p, .body-text {
    PRINT STYLES
    =========================================== */
 @media print {
-  html, body { width: 1920px; height: auto; overflow: visible; background: #fff; }
-  .deck-viewport { position: static; overflow: visible; background: #fff; }
+  @page { size: 1920px 1080px; margin: 0; }
+  html, body { width: 1920px; height: auto; overflow: visible; background: var(--bg-dark); }
+  .deck-viewport { position: static; overflow: visible; background: none; }
   .deck-stage { position: static; width: auto; height: auto; transform: none !important; background: none; }
-  .slide { position: relative; display: block !important; visibility: visible !important; opacity: 1 !important; pointer-events: auto !important; width: 1920px; height: 1080px; break-after: page; page-break-after: always; }
+  .slide {
+    position: relative; display: block !important;
+    visibility: visible !important; opacity: 1 !important; pointer-events: auto !important;
+    width: 1920px; height: 1080px;
+    break-after: page; page-break-after: always;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
   .slide:last-child { break-after: auto; page-break-after: auto; }
+  /* Entrance animations are gated on .visible, which only the on-screen slide
+     carries. Without this every other page prints empty. */
+  .slide *:not(.glow-orb) {
+    opacity: 1 !important; transform: none !important;
+    animation: none !important; transition: none !important;
+  }
+  /* Orbs keep their centring transform; only the pulse is dropped. */
+  .glow-orb { opacity: 0.6 !important; animation: none !important; }
+  /* background-clip:text is not honoured in PDF output — Chrome emits the
+     gradient box and leaves the glyphs transparent, so faithful renderers show
+     a solid orange block instead of the word. Every gradient-filled element
+     falls back to solid brand orange when printing. */
+  .gradient-text, .card-num, .prize-amount, .stat-num, .tier-price {
+    background: none !important;
+    -webkit-text-fill-color: var(--ligia-orange-1) !important;
+    color: var(--ligia-orange-1) !important;
+  }
 }
 
 /* ===========================================
