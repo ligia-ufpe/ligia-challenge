@@ -22,6 +22,18 @@ no navegador, ou acesse a versão publicada no GitHub Pages.
 
 Scroll do mouse e swipe no touch também funcionam. `F11` para tela cheia.
 
+## PDF
+
+Uma versão em PDF do deck (11 páginas, 16:9) está em
+[`ligia-challenge-institucional.pdf`](ligia-challenge-institucional.pdf).
+
+Para regerar depois de editar o `index.html`:
+
+```sh
+google-chrome --headless=new --no-pdf-header-footer \
+  --print-to-pdf=ligia-challenge-institucional.pdf index.html
+```
+
 ## Estrutura
 
 Os 11 slides ficam em `index.html` como elementos `<section class="slide">`,
