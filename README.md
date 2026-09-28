@@ -1,9 +1,10 @@
-# Ligia Challenge by Canastra — Apresentação Institucional
+# Converge Challenge — Apresentação Institucional
 
-Deck institucional do **Ligia Challenge by Canastra**, um hackathon de AI Agents
-no CIn-UFPE, Recife.
+Deck institucional do **Converge Challenge**, um hackathon de AI Agents
+realizado no CIn-UFPE por Ligia, Canastra Ventures e TAIL (UFPB), reunindo
+talentos de Recife e João Pessoa.
 
-- **Quando:** 7 de novembro, sábado
+- **Quando:** data a definir
 - **Onde:** CIn-UFPE, Recife, PE
 - **Vagas:** 70 builders selecionados
 
@@ -24,24 +25,26 @@ Scroll do mouse e swipe no touch também funcionam. `F11` para tela cheia.
 
 ## PDF
 
-Uma versão em PDF do deck (11 páginas, 16:9) está em
-[`ligia-challenge-institucional.pdf`](ligia-challenge-institucional.pdf).
+Uma versão em PDF do deck (10 páginas, 16:9) está em
+[`converge-challenge-institucional.pdf`](converge-challenge-institucional.pdf).
 
 Para regerar depois de editar o `index.html`:
 
 ```sh
 google-chrome --headless=new --no-pdf-header-footer \
-  --print-to-pdf=ligia-challenge-institucional.pdf index.html
+  --print-to-pdf=converge-challenge-institucional.pdf index.html
 ```
 
 ## Estrutura
 
-Os 11 slides ficam em `index.html` como elementos `<section class="slide">`,
+Os 10 slides ficam em `index.html` como elementos `<section class="slide">`,
 dimensionados num palco fixo de 1920×1080 que escala para qualquer janela.
 
 Todas as logos estão embutidas como um sprite SVG (`<symbol>` + `<use>`) no
 topo do `<body>`, então o deck funciona offline e sem imagens quebradas. Cada
-símbolo tem um comentário HTML com a URL de origem da logo.
+símbolo tem um comentário HTML com a URL de origem da logo. O wordmark
+"Converge Challenge" foi recortado do letterhead oficial (a paleta navy do
+`:root` também vem de lá).
 
 ## Contato
 
