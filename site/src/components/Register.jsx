@@ -56,8 +56,8 @@ export default function Register() {
             </li>
           </ul>
 
-          <a href={LUMA.eventUrl} target="_blank" rel="noreferrer" className="text-link" data-reveal>
-            Abrir o evento no Luma <Icon name="arrowUpRight" size={16} />
+          <a href={LUMA.eventUrl} target="_blank" rel="noreferrer" className="btn" data-reveal>
+            Inscreva-se agora <Icon name="arrow" size={18} className="arrow" />
             <span className="visually-hidden"> (abre em nova aba)</span>
           </a>
 

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { EVENT } from '../config.js';
 import './Countdown.css';
 
@@ -48,16 +48,24 @@ export default function Countdown() {
   return (
     <section className="section countdown-section" aria-label="Contagem regressiva para a abertura">
       <div className="container countdown-section__inner">
-        <p className="countdown__label" data-reveal>
+        {/* No reveal here: it sits near the fold and must show without waiting for the observer. */}
+        <p className="eyebrow countdown__label">
           Abertura em
         </p>
         <div className="countdown" role="timer" aria-label="Tempo até a abertura" data-reveal style={{ '--d': '120ms' }}>
           <div className="countdown__units">
-            {parts(START - now).map(([unit, value]) => (
-              <div className="countdown__unit" key={unit}>
-                <span className="countdown__value">{String(value).padStart(2, '0')}</span>
-                <span className="countdown__name">{unit}</span>
-              </div>
+            {parts(START - now).map(([unit, value], i) => (
+              <Fragment key={unit}>
+                {i > 0 && (
+                  <span className="countdown__sep" aria-hidden="true">
+                    :
+                  </span>
+                )}
+                <div className="countdown__unit">
+                  <span className="countdown__value">{String(value).padStart(2, '0')}</span>
+                  <span className="countdown__name">{unit}</span>
+                </div>
+              </Fragment>
             ))}
           </div>
         </div>

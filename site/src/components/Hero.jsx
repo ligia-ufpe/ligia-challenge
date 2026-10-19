@@ -21,8 +21,6 @@ export default function Hero() {
         <p className="hero__badge rise" style={{ '--i': 0 }}>
           <span className="hero__dot" />
           <span>Inscrições de {EVENT.applications}</span>
-          <span aria-hidden="true">·</span>
-          <span>{EVENT.builders} participantes</span>
         </p>
 
         <h1 id="hero-title" className="hero__title rise" style={{ '--i': 1 }}>
@@ -41,10 +39,15 @@ export default function Hero() {
             <Icon name="clock" size={18} /> {EVENT.hours}
           </li>
           <li>
+            <Icon name="check" size={18} /> Gratuito
+          </li>
+          {/* Forces the second row: place and seats. */}
+          <li className="hero__meta-break" aria-hidden="true" />
+          <li className="hero__meta-venue">
             <Icon name="pin" size={18} /> {EVENT.venue} · {EVENT.city}
           </li>
           <li>
-            <Icon name="check" size={18} /> Gratuito
+            <Icon name="users" size={18} /> Vagas limitadas
           </li>
         </ul>
 

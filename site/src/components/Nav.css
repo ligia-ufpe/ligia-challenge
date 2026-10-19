@@ -34,6 +34,23 @@
   gap: 32px;
 }
 
+/* Hidden while the hero's big wordmark is on screen; keeps its space
+   so the links don't shift when it fades in. */
+.nav__brand {
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease;
+}
+
+.nav__brand.is-visible {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
 .nav__brand img {
   height: 46px;
   width: auto;

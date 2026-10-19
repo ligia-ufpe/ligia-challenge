@@ -9,7 +9,23 @@ export default function Nav() {
   const [hidden, setHidden] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState('');
+  const [showBrand, setShowBrand] = useState(false);
   const progressRef = useRef(null);
+
+  // The hero already shows the big wordmark, so the nav logo only appears
+  // once that title has scrolled past the bar.
+  useEffect(() => {
+    const title = document.getElementById('hero-title');
+    if (!title) {
+      setShowBrand(true);
+      return undefined;
+    }
+    const io = new IntersectionObserver(([e]) => setShowBrand(!e.isIntersecting), {
+      rootMargin: '-80px 0px 0px 0px',
+    });
+    io.observe(title);
+    return () => io.disconnect();
+  }, []);
 
   // Glass background once scrolled, hide on scroll down, show on scroll up,
   // and drive the thin progress bar.
@@ -69,7 +85,14 @@ export default function Nav() {
   return (
     <header className={`nav ${scrolled ? 'is-scrolled' : ''} ${hidden && !open ? 'is-hidden' : ''} ${open ? 'is-open' : ''}`}>
       <div className="nav__inner container">
-        <a href="#top" className="nav__brand" onClick={close} aria-label="Converge Challenge powered by Tako, voltar ao topo">
+        <a
+          href="#top"
+          className={`nav__brand ${showBrand || open ? 'is-visible' : ''}`}
+          onClick={close}
+          tabIndex={showBrand || open ? undefined : -1}
+          aria-hidden={showBrand || open ? undefined : true}
+          aria-label="Converge Challenge powered by Tako, voltar ao topo"
+        >
           <img src={logo} alt="" width="1080" height="503" />
         </a>
 
