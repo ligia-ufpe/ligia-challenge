@@ -8,8 +8,8 @@ do Nordeste: **https://convergechallenge.cin.ufpe.br**
 - **Quem:** 80 participantes, estudantes e profissionais de tecnologia,
   empreendedorismo e design, selecionados a partir das inscrições
   (17 a 30 de outubro, pelo Luma). O evento é gratuito.
-- **Organização:** Ligia (CIn-UFPE) e Canastra Ventures
-- **Parceiros:** Porto Digital, CIn-UFPE, CESAR e TAIL · **Apoio:** AWS e Featherless
+- **Organização:** Ligia (CIn-UFPE) e TAIL (UFPB)
+- **Parceiros:** Canastra Ventures, Porto Digital, CIn-UFPE e CESAR · **Apoio:** AWS e Featherless
 
 Os dados do evento usados no site ficam em
 [`site/src/config.js`](site/src/config.js); se algo mudar, comece por lá.

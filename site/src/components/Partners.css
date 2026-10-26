@@ -35,7 +35,7 @@
 }
 
 .partners__logo .logo--ligia { --logo-h: 44px; }
-.partners__logo .logo--canastra { --logo-h: 50px; }
+.partners__logo .logo--tail { --logo-h: 40px; }
 
 .partners__org p {
   font-size: clamp(1rem, 1.3vw, 1.12rem);
@@ -147,7 +147,7 @@
 .partners__row-logos .logo--porto-digital { --logo-h: 42px; }
 .partners__row-logos .logo--cin-ufpe { --logo-h: 40px; }
 .partners__row-logos .logo--cesar { --logo-h: 50px; }
-.partners__row-logos .logo--tail { --logo-h: 84px; }
+.partners__row-logos .logo--canastra { --logo-h: 40px; }
 .partners__row-logos .logo--aws { --logo-h: 38px; }
 .partners__row-logos .logo--featherless { --logo-h: 32px; }
 

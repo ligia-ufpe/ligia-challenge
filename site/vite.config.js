@@ -38,7 +38,7 @@ function eventJsonLd() {
     },
     organizer: [
       { '@type': 'Organization', name: 'Ligia (CIn-UFPE)', url: 'https://www.instagram.com/ligia.ufpe/' },
-      { '@type': 'Organization', name: 'Canastra Ventures', url: 'https://www.canastra.ventures/' },
+      { '@type': 'Organization', name: 'TAIL (UFPB)', url: 'https://tail-tech.com/' },
     ],
     sponsor: { '@type': 'Organization', name: 'Tako', url: 'https://tako.ai/' },
     offers: {

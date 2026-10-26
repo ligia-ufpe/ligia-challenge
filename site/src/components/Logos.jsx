@@ -1,10 +1,10 @@
 import tako from '../assets/logos/tako.png';
 import ligia from '../assets/logos/ligia.svg';
+import tail from '../assets/logos/tail.png';
 import canastra from '../assets/logos/canastra.svg';
 import portoDigital from '../assets/logos/porto-digital.png';
 import cinUfpe from '../assets/logos/cin-ufpe.png';
 import cesar from '../assets/logos/cesar.png';
-import tail from '../assets/logos/tail.svg';
 import aws from '../assets/logos/aws.svg';
 import featherless from '../assets/logos/featherless.svg';
 import './Logos.css';
@@ -45,27 +45,26 @@ export const ORGANIZERS = [
     ),
   },
   {
-    id: 'canastra',
-    name: 'Canastra Ventures',
-    src: canastra,
-    width: 685,
-    height: 200,
-    url: 'https://www.canastra.ventures/',
+    id: 'tail',
+    name: 'TAIL',
+    src: tail,
+    width: 309,
+    height: 74,
+    url: 'https://tail-tech.com/',
     blurb: (
       <>
-        Um <strong>fundo de venture capital focado em IA</strong> que apoia fundadores brasileiros desde o dia zero
-        com capital, programa de residência e conexão direta com o ecossistema do{' '}
-        <strong>Vale do Silício</strong>.
+        Liga de <strong>estudantes e professores da UFPB</strong> dedicada à{' '}
+        <strong>pesquisa e ao ensino de IA</strong>, da graduação ao doutorado.
       </>
     ),
   },
 ];
 
 export const PARTNERS = [
+  { id: 'canastra', name: 'Canastra Ventures', src: canastra, width: 685, height: 200 },
   { id: 'porto-digital', name: 'Porto Digital', src: portoDigital, width: 440, height: 160 },
   { id: 'cin-ufpe', name: 'CIn-UFPE', src: cinUfpe, width: 523, height: 160 },
   { id: 'cesar', name: 'CESAR', src: cesar, width: 334, height: 200 },
-  { id: 'tail', name: 'TAIL', src: tail, width: 398, height: 260 },
 ];
 
 // Gave tools and prizes to the participants.

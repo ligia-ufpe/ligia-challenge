@@ -24,12 +24,9 @@
 .logo--porto-digital { --logo-h: 32px; }
 .logo--cin-ufpe { --logo-h: 30px; }
 .logo--cesar { --logo-h: 38px; }
-.logo--tail { --logo-h: 58px; }
+.logo--tail { --logo-h: 26px; }
 .logo--aws { --logo-h: 30px; }
 .logo--featherless { --logo-h: 26px; }
-
-/* the partner chart shows TAIL in white on navy */
-.logo--tail img { filter: brightness(0) invert(1); }
 
 /* Muted until hovered, so mismatched brand colours sit together quietly. */
 .logo--mono {
