@@ -1,7 +1,7 @@
 # Converge Challenge — Site
 
 Event website for **Converge Challenge**, the AI Agents hackathon powered by Tako
-and organized by Ligia (CIn-UFPE) and Canastra Ventures. Built with Vite + React.
+and organized by Ligia (CIn-UFPE) and TAIL (UFPB). Built with Vite + React.
 Live at https://convergechallenge.cin.ufpe.br. The copy is in Portuguese (pt-BR).
 
 ## Run
@@ -28,11 +28,12 @@ npm run preview   # serve the build locally
   `src/components/Sponsor.jsx`.
 - **Partner logos** (blurbs too): `src/components/Logos.jsx`, in the tiers of the
   event's partner chart. The event logo with "powered by Tako" (Tako bought naming rights)
-  must always show; organizers (Ligia, Canastra) whenever possible; partners
-  (Porto Digital, CIn-UFPE, CESAR, TAIL) and supporters (AWS, Featherless) when there is room.
+  must always show; organizers (Ligia, TAIL) whenever possible; partners
+  (Canastra, Porto Digital, CIn-UFPE, CESAR) and supporters (AWS, Featherless) when there is room.
   `converge-logo.svg` is the official logo. Porto Digital, CESAR and Tako were cropped
   from the partner chart, CIn-UFPE comes from the CIn portal (recolored for dark
-  backgrounds), and the other SVGs come from the old institutional deck's logo sprite.
+  backgrounds), TAIL's lockup (`tail.png`) was supplied separately and trimmed to its ink, and the other
+  SVGs come from the old institutional deck's logo sprite.
 - **Share image:** `public/og-image.jpg` (1200×630, used by `og:image`). Its source is
   [`scripts/og-image.html`](scripts/og-image.html); the render command is in that file.
   Regenerate it when the partners change.

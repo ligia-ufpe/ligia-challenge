@@ -45,7 +45,7 @@ export default function Footer() {
         </div>
 
         <div className="footer__bottom">
-          <p>© 2026 Converge Challenge · Ligia (CIn-UFPE) &amp; Canastra Ventures.</p>
+          <p>© 2026 Converge Challenge · Ligia (CIn-UFPE) &amp; TAIL (UFPB).</p>
           <a href="#top" className="footer__top-link">
             Voltar ao topo <Icon name="arrowDown" size={14} style={{ transform: 'rotate(180deg)' }} />
           </a>

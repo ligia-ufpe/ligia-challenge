@@ -232,6 +232,7 @@
 .hero__logo-group--quiet .logo--porto-digital { --logo-h: 22px; }
 .hero__logo-group--quiet .logo--cin-ufpe { --logo-h: 21px; }
 .hero__logo-group--quiet .logo--cesar { --logo-h: 24px; }
+.hero__logo-group--quiet .logo--canastra { --logo-h: 22px; }
 .hero__logo-group--quiet .logo--featherless { --logo-h: 18px; gap: 7px; }
 
 .hero__logo-group--quiet .logo--mono {
@@ -241,25 +242,6 @@
 .hero__logo-group--quiet .logo--mono:hover,
 .hero__logo-group--quiet .logo--mono:focus-within {
   opacity: 1;
-}
-
-/* TAIL: the full logo (net mark, wordmark and tagline), cropped to its ink so
-   the artwork's empty margins don't shrink it. Crop box in the 398x260
-   artwork: x 24-378, y 31-248. */
-.hero__logos .logo--tail {
-  --h: 32px;
-  position: relative;
-  width: calc(var(--h) * 354 / 217);
-  height: var(--h);
-  overflow: hidden;
-}
-
-.hero__logos .logo--tail img {
-  position: absolute;
-  left: calc(var(--h) * -24 / 217);
-  top: calc(var(--h) * -31 / 217);
-  height: calc(var(--h) * 260 / 217);
-  max-width: none;
 }
 
 /* load-in choreography */
@@ -355,13 +337,13 @@
   }
 
   .hero__logo-group--lead .logo--ligia { --logo-h: 27px; }
-  .hero__logo-group--lead .logo--canastra { --logo-h: 31px; }
+  .hero__logo-group--lead .logo--tail { --logo-h: 23px; }
 
   .hero__logo-group--quiet .hero__logo-list { gap: 12px 18px; }
   .hero__logo-group--quiet .logo { --logo-h: 18px; }
   .hero__logo-group--quiet .logo--porto-digital { --logo-h: 20px; }
   .hero__logo-group--quiet .logo--cin-ufpe { --logo-h: 19px; }
   .hero__logo-group--quiet .logo--cesar { --logo-h: 22px; }
+  .hero__logo-group--quiet .logo--canastra { --logo-h: 20px; }
   .hero__logo-group--quiet .logo--featherless { --logo-h: 16px; }
-  .hero__logos .logo--tail { --h: 29px; }
 }

@@ -62,7 +62,7 @@ export default function Register() {
           </a>
 
           <p className="register__consent">
-            Ao se inscrever, você concorda em compartilhar seus dados com a Ligia (CIn-UFPE), a Canastra Ventures, a
+            Ao se inscrever, você concorda em compartilhar seus dados com a Ligia (CIn-UFPE), a TAIL (UFPB), a
             Tako e os demais patrocinadores e parceiros do evento, e autoriza o envio de novidades, anúncios e outras
             comunicações dessas organizações.
           </p>
