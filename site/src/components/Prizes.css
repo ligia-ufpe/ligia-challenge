@@ -82,6 +82,19 @@
   color: var(--ink-dim);
 }
 
+.prizes__cash {
+  font-size: 16px;
+  color: var(--ink-dim);
+}
+
+.prizes__cash strong {
+  font-family: var(--font-mono);
+  font-size: clamp(1.3rem, 2vw, 1.6rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--orange);
+}
+
 .prizes__extra {
   margin-top: auto;
   padding-top: 16px;

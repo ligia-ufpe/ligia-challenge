@@ -1,12 +1,12 @@
 import { Logo, SUPPORTERS } from './Logos.jsx';
 import './Prizes.css';
 
-// Prêmios anunciados na página do evento no Luma. O valor em dinheiro do 1º lugar
-// ainda não foi definido, então fica de fora até ser confirmado.
+// Prêmios anunciados na página do evento no Luma.
 const PODIUM = [
   {
     place: '1º lugar',
     amount: 'US$ 10.000+',
+    cash: 'R$ 3.000',
     extra: 'Call direta com os sócios da Canastra para o AI Residency (fast track)',
   },
   {
@@ -34,8 +34,9 @@ export default function Prizes() {
             O que está em <em>jogo</em>.
           </h2>
           <p className="lede" data-reveal style={{ '--d': '160ms' }}>
-            Mais de <strong>US$ 20 mil em prêmios combinados</strong> para os três melhores projetos. Novos prêmios
-            podem entrar conforme novos parceiros se juntarem ao evento.
+            Mais de <strong>US$ 20 mil em prêmios combinados</strong> para os três melhores projetos, além de{' '}
+            <strong>R$&nbsp;3.000 em dinheiro</strong> para o 1º lugar. Novos prêmios podem entrar conforme novos parceiros
+            se juntarem ao evento.
           </p>
         </div>
 
@@ -52,6 +53,11 @@ export default function Prizes() {
                 {p.amount}
                 <small>em prêmios combinados</small>
               </p>
+              {p.cash && (
+                <p className="prizes__cash">
+                  <strong>+ {p.cash}</strong> em dinheiro
+                </p>
+              )}
               {p.extra && <p className="prizes__extra">{p.extra}</p>}
             </li>
           ))}

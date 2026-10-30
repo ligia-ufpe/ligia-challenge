@@ -34,7 +34,7 @@ const QUESTIONS = [
   },
   {
     q: 'O que os participantes ganham?',
-    a: 'Mentoria de profissionais do mercado, US$ 25 em créditos de inferência da Featherless, networking com participantes e parceiros, um Demo Day ao vivo diante de um júri e prêmios para os três melhores projetos, com mais de US$ 20 mil em prêmios combinados.',
+    a: 'Mentoria de profissionais do mercado, US$ 25 em créditos de inferência da Featherless, networking com participantes e parceiros, um Demo Day ao vivo diante de um júri e prêmios para os três melhores projetos, com mais de US$ 20 mil em prêmios combinados e R$ 3.000 em dinheiro para o 1º lugar.',
   },
   // Hidden along with the sponsor section.
   // {
