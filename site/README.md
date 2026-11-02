@@ -50,6 +50,9 @@ src/
   lib/ascii.js         static ASCII art backgrounds (#*+= motif from the deck)
 public/                favicon, share image, robots.txt, sitemap.xml
 scripts/og-image.html  source of the share image
+scripts/tv-hands.py    builds the hands image for the TV display
+tv/index.html          TV display page, served at /tv/
+src/tv/                its scenes (scenes/), artwork (assets/), dotted mesh and dissolve
 ```
 
 Fonts are self-hosted through Fontsource: **Geist** (body), **Geist Mono**
@@ -57,6 +60,36 @@ Fonts are self-hosted through Fontsource: **Geist** (body), **Geist Mono**
 
 Animations (ASCII torus, text scramble, typing terminal, count-ups, countdown)
 pause off screen and turn off for visitors with `prefers-reduced-motion`.
+
+## TV display (`/tv/`)
+
+A second page for the venue TVs during intervals: ASCII artwork in the style of
+the campaign posts, one piece at a time in the centre of the screen, each
+dissolving in (3.5 s), holding (25 s) and dissolving out, the next one already
+dissolving in as the last one goes, over the faint dotted mesh. The pieces: the hands from Michelangelo's *Creation of Adam*, rings and
+links, a twisting ribbon, a halftone sphere and the torus. No logos yet. Live at
+https://convergechallenge.cin.ufpe.br/tv/ once merged (keep the trailing slash).
+
+- Press **F** or double-click for fullscreen. The cursor hides after a few seconds
+  and the page asks the browser to keep the screen awake.
+- URL options (combine with `&`):
+  - `?hold=25`: seconds each piece stays fully visible.
+  - `?fade=3.5`: seconds each dissolve, in and out, takes.
+  - `?pause=-1`: seconds between one piece fully gone and the next starting.
+    Negative overlaps them (the default starts the next one a second early); use
+    `0` or more for an empty beat between pieces.
+  - `?scene=3`: start from a given piece.
+  - `?captions=1`: show a small number + name caption (off by default).
+  - `?at=20`: jump into the loop, handy for previews.
+- Scenes live in `src/tv/scenes/`, one file each. The order and timing are at the
+  top of `src/tv/main.js`.
+- The hands come from the public-domain fresco (Wikimedia Commons scan, linked in
+  [`scripts/tv-hands.py`](scripts/tv-hands.py)). That script crops the arms, masks out
+  the plaster and writes `src/tv/assets/creation-hands.png` (brightness + mask),
+  which the page turns into characters at any screen size.
+- The page is `noindex` and not in the sitemap. It's a separate Vite entry
+  (`build.rollupOptions.input` in `vite.config.js`) in plain JS and canvas, so the
+  main site only shares the Geist Mono font with it.
 
 ## Deploy
 

@@ -1,0 +1,109 @@
+/* ------------------------------------------------------------------
+   TV display (/tv/): full-bleed navy field from the campaign posts,
+   a faint dotted mesh, and the ASCII artwork on top.
+------------------------------------------------------------------- */
+
+:root {
+  --tv-navy: #010b3c;
+  --tv-ink: #c4cff6;
+  --tv-orange: #ff5a1f;
+  --font-mono: 'Geist Mono Variable', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  color-scheme: dark;
+}
+
+body {
+  background: var(--tv-navy);
+  color: var(--tv-ink);
+  font-family: var(--font-mono);
+  -webkit-font-smoothing: antialiased;
+}
+
+body.is-idle {
+  cursor: none;
+}
+
+.tv {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  /* Lighter blue pooling in the corners, deep navy in the middle (as in the posts). */
+  background:
+    radial-gradient(110% 80% at 0% 0%, rgba(10, 52, 112, 0.9), transparent 58%),
+    radial-gradient(90% 75% at 100% 100%, rgba(16, 46, 108, 0.75), transparent 62%),
+    radial-gradient(70% 60% at 100% 0%, rgba(6, 30, 84, 0.6), transparent 70%),
+    var(--tv-navy);
+}
+
+/* Soft vignette so the edges of the screen settle into the navy. */
+.tv::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(130% 120% at 50% 50%, transparent 55%, rgba(1, 6, 34, 0.55));
+}
+
+.tv canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.tv__caption {
+  position: absolute;
+  z-index: 1;
+  left: clamp(24px, 4.5vw, 96px);
+  bottom: clamp(20px, 5.5vh, 72px);
+  display: flex;
+  align-items: center;
+  gap: 0.9em;
+  margin: 0;
+  font-size: clamp(12px, 1.55vh, 22px);
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity 1.6s var(--ease-out),
+    transform 1.6s var(--ease-out);
+}
+
+.tv__caption[hidden] {
+  display: none;
+}
+
+.tv__caption.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+.tv__index {
+  color: rgba(196, 207, 246, 0.45);
+  font-variant-numeric: tabular-nums;
+}
+
+.tv__rule {
+  width: 2.2em;
+  height: 1px;
+  background: var(--tv-orange);
+}
+
+.tv__word {
+  color: rgba(226, 232, 255, 0.85);
+}
