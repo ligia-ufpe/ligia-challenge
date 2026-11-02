@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Converge Challenge — TV</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="theme-color" content="#010b3c" />
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  </head>
+  <body>
+    <!-- Ambient loop for the venue TVs during intervals: ASCII artwork that
+         dissolves in and out over the dotted mesh from the campaign posts.
+         F or a double click toggles fullscreen. -->
+    <main class="tv" aria-label="Converge Challenge">
+      <canvas class="tv__mesh" aria-hidden="true"></canvas>
+      <canvas class="tv__art" aria-hidden="true"></canvas>
+      <p class="tv__caption" aria-hidden="true">
+        <span class="tv__index"></span>
+        <span class="tv__rule"></span>
+        <span class="tv__word"></span>
+      </p>
+    </main>
+    <script type="module" src="/src/tv/main.js"></script>
+  </body>
+</html>

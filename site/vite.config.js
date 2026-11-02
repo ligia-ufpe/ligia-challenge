@@ -1,3 +1,4 @@
+import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { EVENT, LUMA, SITE_URL } from './src/config.js';
@@ -54,7 +55,9 @@ function eventJsonLd() {
 
   return {
     name: 'event-json-ld',
-    transformIndexHtml() {
+    transformIndexHtml(html, ctx) {
+      // Only the event page gets the Event schema, not the TV display at /tv/.
+      if (ctx.path !== '/index.html') return html;
       return [
         {
           tag: 'script',
@@ -69,7 +72,16 @@ function eventJsonLd() {
 
 // Relative base so the build works from any host or sub-path
 // (Vercel, GitHub Pages under /ligia-challenge/, or a plain file server).
+// Two pages: the event site and the ASCII loop for the venue TVs at /tv/.
 export default defineConfig({
   base: './',
   plugins: [react(), eventJsonLd()],
+  build: {
+    rollupOptions: {
+      input: {
+        main: fileURLToPath(new URL('./index.html', import.meta.url)),
+        tv: fileURLToPath(new URL('./tv/index.html', import.meta.url)),
+      },
+    },
+  },
 });
