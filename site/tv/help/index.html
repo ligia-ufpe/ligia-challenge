@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Converge Challenge — Parâmetros da TV</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="theme-color" content="#010b3c" />
+    <link rel="icon" type="image/svg+xml" href="../../favicon.svg" />
+    <script>
+      // The CIn proxy also answers /tv/help without the slash, which would send
+      // the relative links below to the wrong place.
+      if (!location.pathname.endsWith('/')) {
+        location.replace(location.pathname + '/' + location.search + location.hash);
+      }
+    </script>
+  </head>
+  <body>
+    <!-- Reference for the URL options in src/tv/main.js. Add new options here too. -->
+    <main class="help">
+      <header class="help__head">
+        <img
+          class="help__logo"
+          src="/src/assets/logos/converge-logo.svg"
+          alt="Converge Challenge powered by Tako"
+          width="1080"
+          height="503"
+        />
+        <h1>Parâmetros da TV</h1>
+        <p>
+          Coloque depois de <code>/tv/</code>, sem tirar a barra final. O primeiro vem depois
+          de <code>?</code> e os outros são separados por <code>&amp;</code>.
+        </p>
+        <p class="help__example"><code>/tv/?agenda=0&amp;hold=40</code></p>
+      </header>
+
+      <section aria-labelledby="links-title">
+        <h2 id="links-title">Links prontos</h2>
+        <ul class="links">
+          <li><a href="../"><span>TV do evento</span><code>/tv/</code></a></li>
+          <li><a href="../?agenda=0"><span>Só a arte</span><code>?agenda=0</code></a></li>
+          <li>
+            <a href="../?now=2026-11-07T09:40">
+              <span>Prévia: sábado na abertura</span><code>?now=2026-11-07T09:40</code>
+            </a>
+          </li>
+          <li>
+            <a href="../?now=2026-11-08T12:45">
+              <span>Prévia: última hora do prazo</span><code>?now=2026-11-08T12:45</code>
+            </a>
+          </li>
+          <li>
+            <a href="../?now=2026-11-08T12:58">
+              <span>Prévia: últimos 10 minutos</span><code>?now=2026-11-08T12:58</code>
+            </a>
+          </li>
+          <li>
+            <a href="../?now=2026-11-08T13:05">
+              <span>Prévia: submissões encerradas</span><code>?now=2026-11-08T13:05</code>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="agenda-title">
+        <h2 id="agenda-title">Relógio e programação</h2>
+        <dl class="params">
+          <div class="param">
+            <dt><code>agenda</code><span>padrão: ligado</span></dt>
+            <dd><code>agenda=0</code> tira o relógio e a programação e deixa só a arte.</dd>
+          </div>
+          <div class="param">
+            <dt><code>now</code><span>padrão: hora real</span></dt>
+            <dd>
+              Simula a hora em Recife e segue contando a partir dela. Os segundos são opcionais.
+              Exemplo: <code>now=2026-11-08T12:45</code>.
+            </dd>
+          </div>
+        </dl>
+      </section>
+
+      <section aria-labelledby="art-title">
+        <h2 id="art-title">Arte</h2>
+        <dl class="params">
+          <div class="param">
+            <dt><code>hold</code><span>padrão: 25</span></dt>
+            <dd>Segundos que cada peça fica inteira na tela. Mínimo: 2.</dd>
+          </div>
+          <div class="param">
+            <dt><code>fade</code><span>padrão: 3.5</span></dt>
+            <dd>Segundos de cada dissolução, na entrada e na saída. Mínimo: 0.5.</dd>
+          </div>
+          <div class="param">
+            <dt><code>pause</code><span>padrão: -1</span></dt>
+            <dd>
+              Segundos entre uma peça sumir e a próxima começar. Negativo sobrepõe as duas;
+              <code>0</code> ou mais deixa um intervalo vazio.
+            </dd>
+          </div>
+          <div class="param">
+            <dt><code>scene</code><span>padrão: 1</span></dt>
+            <dd>
+              Peça inicial: 1 criar (mãos), 2 conectar (anéis), 3 fluir (faixa), 4 convergir
+              (esfera), 5 iterar (toro).
+            </dd>
+          </div>
+          <div class="param">
+            <dt><code>captions</code><span>padrão: desligado</span></dt>
+            <dd><code>captions=1</code> mostra o número e o nome da peça no canto.</dd>
+          </div>
+          <div class="param">
+            <dt><code>at</code><span>padrão: 0</span></dt>
+            <dd>Pula esses segundos dentro do ciclo. Útil para prévias.</dd>
+          </div>
+        </dl>
+      </section>
+
+      <section aria-labelledby="keys-title">
+        <h2 id="keys-title">Atalhos</h2>
+        <dl class="params">
+          <div class="param">
+            <dt><kbd>F</kbd><span>ou duplo clique</span></dt>
+            <dd>Entra e sai da tela cheia.</dd>
+          </div>
+        </dl>
+      </section>
+    </main>
+    <script type="module" src="/src/tv/help.js"></script>
+  </body>
+</html>

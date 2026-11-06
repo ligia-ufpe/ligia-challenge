@@ -20,6 +20,29 @@
         <span class="tv__rule"></span>
         <span class="tv__word"></span>
       </p>
+      <!-- Clock and schedule overlay, filled in by src/tv/agenda.js. It stays
+           hidden with ?agenda=0 and after the event. -->
+      <aside class="tv__agenda" aria-label="Programação" hidden>
+        <div class="agenda__limit">
+          <p class="agenda__limit-title"></p>
+          <p class="agenda__countdown"><span></span><small></small><span></span><small></small></p>
+          <p class="agenda__limit-note"></p>
+        </div>
+        <div class="agenda__clock">
+          <p class="agenda__time"><span class="agenda__hm"></span><span class="agenda__ss"></span></p>
+          <p class="agenda__date"></p>
+        </div>
+        <div class="agenda__now">
+          <p class="agenda__label">Agora</p>
+          <p class="agenda__title"></p>
+          <p class="agenda__meta"></p>
+        </div>
+        <div class="agenda__next">
+          <p class="agenda__label">A seguir</p>
+          <p class="agenda__title"></p>
+          <p class="agenda__meta"></p>
+        </div>
+      </aside>
     </main>
     <script type="module" src="/src/tv/main.js"></script>
   </body>
