@@ -1,0 +1,180 @@
+/* ------------------------------------------------------------------
+   TV help (/tv/help/): the URL options of the TV display. Same navy and
+   mono type as /tv/, but a page that scrolls and works on a phone.
+------------------------------------------------------------------- */
+
+:root {
+  --help-navy: #010b3c;
+  --help-ink: #eaf0ff;
+  --help-dim: #b9c0d4;
+  --help-line: rgba(234, 240, 255, 0.16);
+  --help-orange: #ff5a1f;
+  --help-orange-soft: #ff8a5b;
+  --font-mono: 'Geist Mono Variable', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: dark;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--help-navy);
+  color: var(--help-ink);
+  font-family: var(--font-mono);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+p,
+dl,
+dd,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+.help {
+  display: grid;
+  gap: 48px;
+  max-width: 840px;
+  margin: 0 auto;
+  padding: 48px 16px 64px;
+}
+
+.help__head {
+  display: grid;
+  gap: 16px;
+}
+
+.help__logo {
+  width: 180px;
+  height: auto;
+  margin-bottom: 16px;
+}
+
+h1 {
+  font-size: clamp(32px, 6vw, 44px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+h2 {
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--help-orange-soft);
+}
+
+.help__head p {
+  color: var(--help-dim);
+}
+
+code,
+kbd {
+  font-family: inherit;
+  color: var(--help-ink);
+}
+
+.help__example code {
+  display: inline-block;
+  padding: 8px 12px;
+  border: 1px solid var(--help-line);
+  border-radius: 8px;
+  overflow-wrap: anywhere;
+}
+
+/* Ready-made links */
+
+.links {
+  list-style: none;
+}
+
+.links li + li {
+  border-top: 1px solid var(--help-line);
+}
+
+.links a {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2px 24px;
+  padding: 12px 0;
+  color: var(--help-ink);
+  text-decoration: none;
+}
+
+.links code {
+  color: var(--help-dim);
+  overflow-wrap: anywhere;
+}
+
+.links a:hover span,
+.links a:focus-visible span {
+  color: var(--help-orange-soft);
+}
+
+a:focus-visible {
+  outline: 2px solid var(--help-orange);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Parameters */
+
+.param {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 4px 24px;
+  padding: 14px 0;
+}
+
+.param + .param {
+  border-top: 1px solid var(--help-line);
+}
+
+.param dt {
+  display: grid;
+  align-content: start;
+}
+
+.param dt code,
+.param dt kbd {
+  font-weight: 600;
+  color: var(--help-orange-soft);
+}
+
+.param dt span {
+  font-size: 14px;
+  color: var(--help-dim);
+}
+
+.param dd {
+  color: var(--help-dim);
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 600px) {
+  .help {
+    gap: 40px;
+    padding-top: 32px;
+  }
+
+  .param {
+    grid-template-columns: 1fr;
+  }
+}

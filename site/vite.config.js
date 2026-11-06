@@ -72,7 +72,8 @@ function eventJsonLd() {
 
 // Relative base so the build works from any host or sub-path
 // (Vercel, GitHub Pages under /ligia-challenge/, or a plain file server).
-// Two pages: the event site and the ASCII loop for the venue TVs at /tv/.
+// Three pages: the event site, the ASCII loop for the venue TVs at /tv/ and its
+// list of URL options at /tv/help/.
 export default defineConfig({
   base: './',
   plugins: [react(), eventJsonLd()],
@@ -81,6 +82,7 @@ export default defineConfig({
       input: {
         main: fileURLToPath(new URL('./index.html', import.meta.url)),
         tv: fileURLToPath(new URL('./tv/index.html', import.meta.url)),
+        tvHelp: fileURLToPath(new URL('./tv/help/index.html', import.meta.url)),
       },
     },
   },

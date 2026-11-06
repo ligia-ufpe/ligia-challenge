@@ -52,6 +52,7 @@ public/                favicon, share image, robots.txt, sitemap.xml
 scripts/og-image.html  source of the share image
 scripts/tv-hands.py    builds the hands image for the TV display
 tv/index.html          TV display page, served at /tv/
+tv/help/index.html     list of the TV's URL options, served at /tv/help/
 src/tv/                its scenes (scenes/), artwork (assets/), dotted mesh and dissolve
 ```
 
@@ -70,9 +71,33 @@ dissolving in as the last one goes, over the faint dotted mesh. The pieces: the 
 links, a twisting ribbon, a halftone sphere and the torus. No logos yet. Live at
 https://convergechallenge.cin.ufpe.br/tv/ once merged (keep the trailing slash).
 
+During the event a clock and schedule overlay runs on the right of the screen, on by
+default, with the artwork in the area left of it. It shows Recife time whatever the
+device's timezone is (from the device's clock, so check that the TVs are set right),
+the current section with its time left, what comes next, and the hard limits on top
+in orange:
+
+- **Before the event:** a countdown to the start. From 08:30 on Saturday, a countdown
+  to the start of hacking.
+- **Submission deadline:** its countdown runs from the start of hacking on Saturday.
+  In the last hour the card turns solid orange, and in the last 10 minutes the
+  countdown takes the whole screen. After the deadline, "Submissões encerradas" stays
+  up for an hour.
+- **After the event:** the overlay leaves at 20:00 on Sunday and the artwork takes the
+  whole screen again.
+
+All of it lives in [`src/tv/schedule.js`](src/tv/schedule.js): sections, hard limits,
+the urgency steps and the time the overlay leaves. Change a time there, deploy and
+reload the TVs. Sunday's 09:30 start comes from an older planning sheet, because the
+organizers' email only says "manhã".
+
 - Press **F** or double-click for fullscreen. The cursor hides after a few seconds
   and the page asks the browser to keep the screen awake.
-- URL options (combine with `&`):
+- URL options (combine with `&`), also listed in Portuguese at
+  https://convergechallenge.cin.ufpe.br/tv/help/ with ready-made preview links:
+  - `?agenda=0`: turn the overlay off, leaving only the artwork.
+  - `?now=2026-11-08T12:45`: simulate the current time in Recife (seconds optional),
+    ticking from there, to preview any moment of the schedule.
   - `?hold=25`: seconds each piece stays fully visible.
   - `?fade=3.5`: seconds each dissolve, in and out, takes.
   - `?pause=-1`: seconds between one piece fully gone and the next starting.
@@ -87,6 +112,7 @@ https://convergechallenge.cin.ufpe.br/tv/ once merged (keep the trailing slash).
   [`scripts/tv-hands.py`](scripts/tv-hands.py)). That script crops the arms, masks out
   the plaster and writes `src/tv/assets/creation-hands.png` (brightness + mask),
   which the page turns into characters at any screen size.
+- `/tv/help/` lists the URL options; when adding one, add it to `tv/help/index.html` too.
 - The page is `noindex` and not in the sitemap. It's a separate Vite entry
   (`build.rollupOptions.input` in `vite.config.js`) in plain JS and canvas, so the
   main site only shares the Geist Mono font with it.

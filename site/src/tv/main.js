@@ -1,7 +1,7 @@
 // TV display: ASCII artwork from the campaign posts dissolving in and out,
 // one piece at a time, in the centre of the screen.
 //
-// URL options (all optional):
+// URL options (all optional, listed for the team at /tv/help/, so add new ones there too):
 //   ?hold=25    seconds each scene stays fully visible
 //   ?fade=3.5   seconds each dissolve (in, and out) takes
 //   ?pause=-1   seconds between one piece fully gone and the next starting;
@@ -10,6 +10,8 @@
 //   ?scene=3    start from the third scene
 //   ?captions=1 show a small caption (number and name) in the corner
 //   ?at=20      jump this many seconds into the loop (handy for previews)
+//   ?agenda=0   turn off the clock and schedule overlay (on by default)
+//   ?now=2026-11-08T12:45  simulate the current time in Recife, ticking from there
 import '@fontsource-variable/geist-mono';
 import './tv.css';
 
@@ -22,6 +24,7 @@ import {
   drawGlyphs,
   measureStage,
 } from './stage.js';
+import { createAgenda } from './agenda.js';
 import { createMesh } from './mesh.js';
 import hands from './scenes/hands.js';
 import network from './scenes/network.js';
@@ -43,6 +46,7 @@ const LIFE = FADE_IN + HOLD + FADE_OUT;
 const STEP = LIFE + PAUSE;
 const FPS = 30;
 const MESH_FPS = 15;
+const EDGE_FADE = 0.12; // share of the art area that fades out next to the overlay
 
 const SCENES = [hands, network, flow, orb, torus].map((make, i) => ({
   scene: make(),
@@ -62,6 +66,13 @@ const caption = document.querySelector('.tv__caption');
 const captionIndex = caption.querySelector('.tv__index');
 const captionWord = caption.querySelector('.tv__word');
 caption.hidden = !showCaptions;
+const agenda =
+  params.get('agenda') === '0'
+    ? null
+    : createAgenda(document.querySelector('.tv__agenda'), {
+        now: params.get('now'),
+        onVisibility: resize,
+      });
 
 const glyphs = new Batch(16384);
 const dots = new Batch(16384);
@@ -69,19 +80,31 @@ let stage = null;
 let dpr = 1;
 let last = -Infinity; // last art frame
 let lastMesh = -Infinity; // last mesh frame
+let edgeFade = null; // gradient that dissolves the art next to the overlay
 
 function frameFor(W, H) {
-  return { cx: W / 2, cy: H / 2, size: Math.min(H * 0.8, W * 0.5) };
+  // Next to the overlay the art area is close to square, so pieces can fill more of it.
+  const share = agenda?.visible ? 0.62 : 0.5;
+  return { cx: W / 2, cy: H / 2, size: Math.min(H * 0.8, W * share) };
 }
 
+// With the overlay on, the whole stage shrinks to the art canvas (narrowed in
+// tv.css), not just the frame: the ribbon and the hands size themselves from the
+// stage and would otherwise run under the overlay.
 function resize() {
-  const W = window.innerWidth;
+  const W = agenda?.visible ? artCanvas.clientWidth : window.innerWidth;
   const H = window.innerHeight;
   dpr = Math.min(2, window.devicePixelRatio || 1);
   artCanvas.width = Math.round(W * dpr);
   artCanvas.height = Math.round(H * dpr);
   stage = measureStage(art, W, H);
-  mesh.resize(W, H, dpr);
+  mesh.resize(window.innerWidth, H, dpr);
+  edgeFade = null;
+  if (agenda?.visible) {
+    edgeFade = art.createLinearGradient(W * (1 - EDGE_FADE), 0, W, 0);
+    edgeFade.addColorStop(0, 'rgba(0, 0, 0, 0)');
+    edgeFade.addColorStop(1, 'rgb(0, 0, 0)');
+  }
   for (const s of SCENES) {
     s.field = dissolveField(stage, s.seed);
     s.scene.layout(stage, frameFor(W, H));
@@ -119,6 +142,7 @@ const t0 = performance.now() - (startScene * STEP + startAt) * 1000;
 // whichever is more overdue, so the two never pile up in one frame.
 function tick(now) {
   requestAnimationFrame(tick);
+  if (agenda?.covers) return;
   const artLate = (now - last) * (FPS / 1000);
   const meshLate = (now - lastMesh) * (MESH_FPS / 1000);
   if (Math.max(artLate, meshLate) < 0.94) return;
@@ -164,6 +188,12 @@ function drawArt(T) {
   art.font = stage.font;
   art.textBaseline = 'top';
   drawGlyphs(art, glyphs);
+  if (edgeFade) {
+    art.globalCompositeOperation = 'destination-out';
+    art.fillStyle = edgeFade;
+    art.fillRect(stage.W * (1 - EDGE_FADE), 0, stage.W * EDGE_FADE, stage.H);
+    art.globalCompositeOperation = 'source-over';
+  }
   if (lead >= 0) setCaption(lead);
 }
 
