@@ -1,6 +1,7 @@
 import './Mentors.css';
 
-// Nomes anunciados na página do evento no Luma; novos mentores entram aqui.
+// Banca e mentores da página do evento no Luma. Pedro Kruta e Mônica do Carmo vêm do
+// e-mail da organização com o time da Tako. Novos nomes entram aqui.
 const MENTORS = [
   {
     name: 'Matheus Teixeira',
@@ -12,28 +13,57 @@ const MENTORS = [
     tags: ['Mentor', 'Jurado'],
   },
   {
-    name: 'Pedro Stanzani',
+    name: 'André Spanguero',
     role: (
       <>
-        Engenheiro na <strong>Tako</strong>, onde construiu a Nara, recrutadora de IA por voz.
+        Engenheiro de software na <strong>Tako</strong>, cientista da computação pela USP.
       </>
     ),
     tags: ['Mentor', 'Jurado'],
   },
   {
-    name: 'Pedro Kruta',
+    name: 'Thais Gaudencio',
     role: (
       <>
-        Engenheiro na <strong>Tako</strong> e estudante de Ciência de Dados e IA na UFPB.
+        Professora do <strong>Centro de Informática da UFPB</strong>.
+      </>
+    ),
+    tags: ['Jurada'],
+  },
+  {
+    name: 'Tales Nobre',
+    role: (
+      <>
+        Data scientist na <strong>Dharma-ai</strong>, formado em Ciência de Dados e IA na UFPB.
       </>
     ),
     tags: ['Mentor'],
   },
+  {
+    name: 'Pedro Kruta',
+    role: (
+      <>
+        Engenheiro de software na <strong>Tako</strong> e estudante de Ciência de Dados e IA na UFPB.
+      </>
+    ),
+    tags: ['Mentor'],
+  },
+  {
+    name: 'Mônica do Carmo',
+    role: (
+      <>
+        Tech recruiter na <strong>Tako</strong>.
+      </>
+    ),
+    tags: ['Time Tako'],
+  },
 ];
 
+// Skips lowercase words, so "Mônica do Carmo" reads MC and not Md.
 const initials = (name) =>
   name
     .split(' ')
+    .filter((w) => /^\p{Lu}/u.test(w))
     .map((w) => w[0])
     .slice(0, 2)
     .join('');
