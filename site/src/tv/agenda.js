@@ -1,7 +1,7 @@
 // Clock and schedule overlay for the venue TVs. agendaAt() works out what applies
 // at a given moment from schedule.js; createAgenda() writes it to the page once a
 // second, on the second, in Recife time whatever the device's timezone is.
-import { HIDE_AT, LIMITS, SECTIONS, TIMEZONE } from './schedule.js';
+import { HIDE_AT, LIMITS, NOTICES, SECTIONS, TIMEZONE } from './schedule.js';
 
 const SECOND = 1000;
 const MINUTE = 60 * SECOND;
@@ -16,6 +16,14 @@ const limits = LIMITS.map((l) => {
   const at = Date.parse(l.at);
   return { ...l, at, showFrom: Date.parse(l.showFrom), closedUntil: at + (l.closedMinutes ?? 0) * MINUTE };
 });
+// A notice is a critical card (the whole screen) with a sign instead of a countdown.
+const notices = NOTICES.map((n) => ({
+  ...n,
+  level: 'critical',
+  notice: true,
+  at: Date.parse(n.at),
+  until: Date.parse(n.until),
+}));
 
 function urgencyOf(limit, left) {
   if (left <= limit.criticalMinutes * MINUTE) return 'critical';
@@ -33,7 +41,8 @@ function limitAt(t) {
 }
 
 // What the overlay shows at time t (ms since the epoch). `limit` fills the card at
-// the top: the countdown to the start before the event, then the hard limits.
+// the top: the countdown to the start before the event, then any notice, then the
+// hard limits.
 export function agendaAt(t) {
   if (t >= hideAt) return { visible: false };
   const first = sections[0];
@@ -44,7 +53,7 @@ export function agendaAt(t) {
     limit:
       t < first.start
         ? { title: 'O evento começa em', at: first.start, left: first.start - t, level: 'start' }
-        : limitAt(t),
+        : (notices.find((n) => n.at <= t && t < n.until) ?? limitAt(t)),
   };
 }
 
@@ -122,13 +131,14 @@ export function createAgenda(root, { now: simulated, onVisibility }) {
   function renderCard(t, limit) {
     card.hidden = !limit;
     root.dataset.level = limit?.level ?? 'none';
+    root.toggleAttribute('data-notice', Boolean(limit?.notice));
     state.covers = limit?.level === 'critical';
     if (!limit) return;
 
     const closed = limit.level === 'closed';
     put(cardTitle, closed ? limit.closedTitle : limit.title);
-    cardTime.hidden = closed;
-    if (!closed) {
+    cardTime.hidden = closed || limit.notice;
+    if (!cardTime.hidden) {
       countdown(limit.left).forEach(([number, unit], i) => {
         put(cardNumbers[i], number);
         put(cardUnits[i], unit);
@@ -137,7 +147,8 @@ export function createAgenda(root, { now: simulated, onVisibility }) {
 
     const day = sameDay(t, limit.at) ? 'hoje' : weekdayFormat.format(limit.at);
     const at = hourMinute(limit.at);
-    if (closed) put(cardNote, `O prazo encerrou às ${at}`);
+    if (limit.notice) put(cardNote, limit.note);
+    else if (closed) put(cardNote, `O prazo encerrou às ${at}`);
     else if (limit.level === 'critical') put(cardNote, `Envie agora: encerra às ${at}`);
     else if (limit.level === 'start') put(cardNote, `${day} às ${at}`);
     else put(cardNote, limit.note ?? `Encerra ${day} às ${at}`);

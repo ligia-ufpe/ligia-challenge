@@ -83,11 +83,13 @@ in orange:
   In the last hour the card turns solid orange, and in the last 10 minutes the
   countdown takes the whole screen. After the deadline, "Submissões encerradas" stays
   up for an hour.
+- **End of Saturday:** from 17:00 to 18:00 an orange attention sign takes the whole
+  screen ("Fim do 1º dia"), in front of the submission countdown.
 - **After the event:** the overlay leaves at 20:00 on Sunday and the artwork takes the
   whole screen again.
 
 All of it lives in [`src/tv/schedule.js`](src/tv/schedule.js): sections, hard limits,
-the urgency steps and the time the overlay leaves. Change a time there, deploy and
+the urgency steps, attention signs (`NOTICES`) and the time the overlay leaves. Change a time there, deploy and
 reload the TVs. Sunday's 09:30 start comes from an older planning sheet, because the
 organizers' email only says "manhã".
 

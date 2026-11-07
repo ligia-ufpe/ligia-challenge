@@ -343,6 +343,35 @@ body.is-idle {
   display: none;
 }
 
+/* Attention sign: the critical card, with the triangle and title in place of the countdown. */
+
+.agenda__attention {
+  display: none;
+}
+
+.tv__agenda[data-notice] .agenda__attention {
+  display: flex;
+  align-items: center;
+  gap: 0.35em;
+  font-size: calc(9 * var(--u));
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.agenda__attention svg {
+  width: 1.5em;
+  height: auto;
+}
+
+.tv__agenda[data-notice] .agenda__limit-title {
+  margin-top: calc(2.5 * var(--u));
+  font-size: calc(17 * var(--u));
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
 /* After the deadline: ink instead of orange, nothing left to count. */
 
 .tv__agenda[data-level='closed'] .agenda__limit {
