@@ -22,7 +22,7 @@ const QUESTIONS = [
   },
   {
     q: 'Preciso ter um time?',
-    a: 'Não. Você pode se inscrever sozinho ou em time de 2 a 4 pessoas. No time, cada integrante faz a própria inscrição e informa o nome do time no formulário. Quem for aprovado sozinho pode formar um time no check-in.',
+    a: 'Para se inscrever, não: vale sozinho ou em time. No time, cada integrante faz a própria inscrição e informa o nome do time no formulário. No evento, as equipes têm de 2 a 4 pessoas: quem chegar sem time pode formar um no check-in ou falar com a organização.',
   },
   {
     q: 'O que devo levar?',
@@ -30,11 +30,11 @@ const QUESTIONS = [
   },
   {
     q: 'O que vamos construir?',
-    a: 'Soluções agênticas, não chatbots ou ferramentas estáticas. Pense em agentes conectados a processos reais como recrutamento, back-office, suporte ao cliente ou vendas, que tornam operações eficientes.',
+    a: 'Soluções agênticas, não chatbots ou ferramentas estáticas. Pense em agentes conectados a processos reais de back-office, vendas, suporte ao cliente, operações ou RH.',
   },
   {
     q: 'O que os participantes ganham?',
-    a: 'Mentoria de profissionais do mercado, US$ 25 em créditos de inferência da Featherless, networking com participantes e parceiros, um Demo Day ao vivo diante de um júri e prêmios para os três melhores projetos, com mais de US$ 20 mil em prêmios combinados e R$ 3.000 em dinheiro para o 1º lugar.',
+    a: 'Mentoria de profissionais do mercado, US$ 25 em créditos de inferência da Featherless, networking com participantes e parceiros, avaliação por uma banca, um Demo Day ao vivo com os 5 finalistas e prêmios para os três melhores projetos: US$ 20 mil em créditos AWS no total, além de R$ 3.000 em dinheiro para o 1º lugar.',
   },
   // Hidden along with the sponsor section.
   // {

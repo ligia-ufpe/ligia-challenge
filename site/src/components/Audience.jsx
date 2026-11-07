@@ -46,7 +46,7 @@ const PERKS = [
   'Mentoria de profissionais do mercado',
   'Networking com participantes e parceiros',
   'Infraestrutura para construir seu projeto',
-  'Palco para apresentar sua solução ao vivo',
+  'Palco para os 5 finalistas apresentarem ao vivo',
   'Avaliação por um júri de especialistas',
   'Prêmios para os três melhores projetos',
   'US$ 25 em créditos de inferência da Featherless',
