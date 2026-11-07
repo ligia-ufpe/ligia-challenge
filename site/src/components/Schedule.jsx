@@ -13,7 +13,7 @@ const DAYS = [
     theme: 'Abertura & construção',
     items: [
       ['08:30', 'Credenciamento & abertura', 'Check-in dos participantes e abertura oficial do evento.'],
-      ['10:00', 'Início do hacking', 'Os times começam a construir, com almoço e mentorias ao longo do dia.'],
+      ['10:30', 'Início do hacking', 'Os times começam a construir, com almoço e mentorias ao longo do dia.'],
       ['17:00', 'Encerramento do 1º dia', 'Portas fecham. Amanhã tem mais construção.'],
     ],
   },
