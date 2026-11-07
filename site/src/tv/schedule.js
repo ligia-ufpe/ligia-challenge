@@ -46,5 +46,16 @@ export const LIMITS = [
   },
 ];
 
+// Full-screen attention signs, shown from `at` until `until`, in front of the art
+// and of any hard limit on the card. No countdown.
+export const NOTICES = [
+  {
+    title: 'Fim do 1º dia',
+    at: '2026-11-07T17:00:00-03:00',
+    until: '2026-11-07T18:00:00-03:00',
+    note: 'Portas fecham. Voltamos amanhã às 08:30',
+  },
+];
+
 // The last section has no known end, so the overlay leaves at a set time.
 export const HIDE_AT = '2026-11-08T20:00:00-03:00';
