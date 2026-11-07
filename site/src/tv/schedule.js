@@ -8,7 +8,7 @@ export const TIMEZONE = 'America/Recife';
 export const SECTIONS = [
   { start: '2026-11-07T08:30:00-03:00', title: 'Credenciamento e café da manhã' },
   { start: '2026-11-07T09:30:00-03:00', title: 'Abertura' },
-  { start: '2026-11-07T10:00:00-03:00', title: 'Hacking e rodadas de mentoria' },
+  { start: '2026-11-07T10:30:00-03:00', title: 'Hacking e rodadas de mentoria' },
   { start: '2026-11-07T13:00:00-03:00', title: 'Almoço no local' },
   { start: '2026-11-07T14:00:00-03:00', title: 'Continuação do hacking' },
   { start: '2026-11-07T17:00:00-03:00', title: 'Encerramento do dia', open: true },
@@ -31,14 +31,14 @@ export const SECTIONS = [
 export const LIMITS = [
   {
     title: 'Início do hacking',
-    at: '2026-11-07T10:00:00-03:00',
+    at: '2026-11-07T10:30:00-03:00',
     showFrom: '2026-11-07T08:30:00-03:00',
     note: 'Nenhum código do projeto antes deste horário',
   },
   {
     title: 'Prazo final de submissão',
     at: '2026-11-08T13:00:00-03:00',
-    showFrom: '2026-11-07T10:00:00-03:00',
+    showFrom: '2026-11-07T10:30:00-03:00',
     urgentMinutes: 60,
     criticalMinutes: 10,
     closedMinutes: 60,
