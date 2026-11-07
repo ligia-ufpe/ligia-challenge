@@ -5,26 +5,12 @@ import Terminal from './Terminal.jsx';
 // import Icon from './Icon.jsx';
 import './Challenge.css';
 
-// Exemplos de problemas a partir do deck. Os logs do terminal são ilustrativos.
+// As cinco direções de projeto da apresentação de abertura. Os logs do terminal são ilustrativos.
 const AGENTS = [
-  {
-    id: 'recrutamento',
-    title: 'Pipeline de recrutamento',
-    text: 'Um agente que tria candidatos e cuida dos follow-ups automaticamente.',
-    lines: [
-      { kind: 'cmd', text: 'converge run agent/recrutamento' },
-      { kind: 'plan', text: 'triar 214 candidatos para "Backend Engineer"' },
-      { kind: 'tool', text: 'ats.fetch(status="new")          214 ok' },
-      { kind: 'exec', text: 'pontuar currículos pela rubrica   38 pré-selecionados' },
-      { kind: 'tool', text: 'calendar.propose(slots=3)        enviado' },
-      { kind: 'loop', text: 'follow-up com 6 candidatos silenciosos' },
-      { kind: 'done', text: 'pipeline atualizado · 0 humanos acionados' },
-    ],
-  },
   {
     id: 'back-office',
     title: 'Agente de back-office',
-    text: 'Cuida de faturamento e compliance de ponta a ponta.',
+    text: 'Cuida de conciliação e faturamento de ponta a ponta.',
     lines: [
       { kind: 'cmd', text: 'converge run agent/back-office' },
       { kind: 'plan', text: 'conciliar faturas de outubro' },
@@ -33,6 +19,20 @@ const AGENTS = [
       { kind: 'check', text: 'regras de compliance (impostos, retenções) ok' },
       { kind: 'loop', text: 'sinalizar 11 divergências para revisão' },
       { kind: 'done', text: 'livros fechados · relatório enviado' },
+    ],
+  },
+  {
+    id: 'vendas',
+    title: 'Agente de vendas',
+    text: 'Pesquisa prospects, organiza o que encontra e mantém o CRM atualizado.',
+    lines: [
+      { kind: 'cmd', text: 'converge run agent/vendas' },
+      { kind: 'plan', text: 'encontrar 50 prospects de fintechs no Nordeste' },
+      { kind: 'tool', text: 'web.search + enrich(company, role) 50 ok' },
+      { kind: 'exec', text: 'pontuar fit · redigir intros pessoais' },
+      { kind: 'tool', text: 'crm.upsert(leads=50)             sincronizado' },
+      { kind: 'loop', text: 'agendar follow-ups para a próxima semana' },
+      { kind: 'done', text: 'pipeline +50 leads qualificados' },
     ],
   },
   {
@@ -50,17 +50,31 @@ const AGENTS = [
     ],
   },
   {
-    id: 'vendas',
-    title: 'Agente de vendas',
-    text: 'Pesquisa prospects, organiza o que encontra e mantém o CRM atualizado.',
+    id: 'operacoes',
+    title: 'Agente de operações',
+    text: 'Acompanha os processos, detecta a falha e corrige sem esperar por alguém.',
     lines: [
-      { kind: 'cmd', text: 'converge run agent/vendas' },
-      { kind: 'plan', text: 'encontrar 50 prospects de fintechs no Nordeste' },
-      { kind: 'tool', text: 'web.search + enrich(company, role) 50 ok' },
-      { kind: 'exec', text: 'pontuar fit · redigir intros pessoais' },
-      { kind: 'tool', text: 'crm.upsert(leads=50)             sincronizado' },
-      { kind: 'loop', text: 'agendar follow-ups para a próxima semana' },
-      { kind: 'done', text: 'pipeline +50 leads qualificados' },
+      { kind: 'cmd', text: 'converge run agent/operacoes' },
+      { kind: 'plan', text: 'monitorar o fluxo de pedidos' },
+      { kind: 'tool', text: 'logs.tail(service="pedidos")     1 erro' },
+      { kind: 'exec', text: 'diagnosticar: fila parada há 12 min' },
+      { kind: 'tool', text: 'queue.restart(worker=3)          ok' },
+      { kind: 'check', text: 'fila normalizada · 87 pedidos reprocessados' },
+      { kind: 'done', text: 'falha corrigida · incidente registrado' },
+    ],
+  },
+  {
+    id: 'rh',
+    title: 'Digital worker de RH',
+    text: 'O Desafio Tako: opcional, com os mesmos critérios. Tria candidatos e cuida dos follow-ups. Sinalize na submissão.',
+    lines: [
+      { kind: 'cmd', text: 'converge run agent/rh' },
+      { kind: 'plan', text: 'triar 214 candidatos para "Backend Engineer"' },
+      { kind: 'tool', text: 'ats.fetch(status="new")          214 ok' },
+      { kind: 'exec', text: 'pontuar currículos pela rubrica   38 pré-selecionados' },
+      { kind: 'tool', text: 'calendar.propose(slots=3)        enviado' },
+      { kind: 'loop', text: 'follow-up com 6 candidatos silenciosos' },
+      { kind: 'done', text: 'pipeline atualizado · 0 humanos acionados' },
     ],
   },
 ];

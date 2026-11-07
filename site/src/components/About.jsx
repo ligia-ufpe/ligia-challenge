@@ -7,7 +7,7 @@ import './About.css';
 
 const STATS = [
   { value: EVENT.builders, label: 'Participantes selecionados' },
-  { value: '16h', label: 'De hacking intensivo' },
+  { value: '10h', label: 'De hacking intensivo' },
   { value: '2', label: `Dias no ${EVENT.venue}` },
   { value: '1', label: 'Demo Day com pitches ao vivo' },
 ];
@@ -30,8 +30,9 @@ export default function About() {
             <p className="lede" data-reveal style={{ '--d': '160ms' }}>
               O <strong>Converge Challenge</strong> é um hackathon presencial que reúne builders:{' '}
               <strong>talentos de IA, engenheiros, designers e fundadores</strong> criando soluções reais com{' '}
-              <strong>AI Agents</strong>. Conecta o talento acadêmico e tech de <strong>Recife</strong> e{' '}
-              <strong>João Pessoa</strong> ao ecossistema nacional de IA.
+              <strong>AI Agents</strong>. Conecta a comunidade de IA do <strong>Nordeste</strong>, com ligas como{' '}
+              <strong>Ligia (UFPE)</strong>, <strong>TAIL (UFPB)</strong> e <strong>LIAO (UFBA)</strong>, ao ecossistema
+              nacional de IA.
             </p>
           </div>
 

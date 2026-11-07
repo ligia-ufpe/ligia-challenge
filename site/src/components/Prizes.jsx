@@ -1,22 +1,26 @@
 import { Logo, SUPPORTERS } from './Logos.jsx';
 import './Prizes.css';
 
-// Prêmios anunciados na página do evento no Luma.
+// Prêmios da apresentação de abertura. O valor em destaque é sempre o de créditos AWS,
+// para os US$ 5.000 do 2º e do 3º lugar não parecerem maiores que os R$ 3.000 do 1º.
 const PODIUM = [
   {
     place: '1º lugar',
-    amount: 'US$ 10.000+',
+    amount: 'US$ 10.000',
     cash: 'R$ 3.000',
-    extra: 'Call direta com os sócios da Canastra para o AI Residency (fast track)',
+    extras: [
+      'US$ 300 na Featherless',
+      'Call direta com os sócios da Canastra para o AI Residency (fast track) ou vaga no Matchmaking 5',
+    ],
   },
   {
     place: '2º lugar',
-    amount: 'US$ 5.000+',
-    extra: 'Vaga garantida no Matchmaking 5 da Canastra',
+    amount: 'US$ 5.000',
+    extras: ['Vaga garantida no Matchmaking 5 da Canastra'],
   },
   {
     place: '3º lugar',
-    amount: 'US$ 5.000+',
+    amount: 'US$ 5.000',
   },
 ];
 
@@ -34,9 +38,9 @@ export default function Prizes() {
             O que está em <em>jogo</em>.
           </h2>
           <p className="lede" data-reveal style={{ '--d': '160ms' }}>
-            Mais de <strong>US$ 20 mil em prêmios combinados</strong> para os três melhores projetos, além de{' '}
-            <strong>R$&nbsp;3.000 em dinheiro</strong> para o 1º lugar. Novos prêmios podem entrar conforme novos parceiros
-            se juntarem ao evento.
+            <strong>US$ 20 mil em créditos AWS</strong> para os três melhores projetos, além de{' '}
+            <strong>R$&nbsp;3.000 em dinheiro</strong> e <strong>US$&nbsp;300 na Featherless</strong> para o 1º lugar. Novos
+            prêmios podem entrar conforme novos parceiros se juntarem ao evento.
           </p>
         </div>
 
@@ -51,14 +55,20 @@ export default function Prizes() {
               <span className="prizes__place">{p.place}</span>
               <p className="prizes__amount">
                 {p.amount}
-                <small>em prêmios combinados</small>
+                <small>em créditos AWS</small>
               </p>
               {p.cash && (
                 <p className="prizes__cash">
                   <strong>+ {p.cash}</strong> em dinheiro
                 </p>
               )}
-              {p.extra && <p className="prizes__extra">{p.extra}</p>}
+              {p.extras && (
+                <ul className="prizes__extra" role="list">
+                  {p.extras.map((extra) => (
+                    <li key={extra}>{extra}</li>
+                  ))}
+                </ul>
+              )}
             </li>
           ))}
         </ol>
@@ -67,8 +77,8 @@ export default function Prizes() {
           <span className="prizes__label">Para todos os participantes</span>
           <Logo logo={featherless} />
           <p>
-            <strong>US$ 25 em créditos de inferência</strong> por participante. Rode agentes com qualquer modelo, sem
-            limite de tamanho e com contexto de até 256K.
+            <strong>US$ 25 em créditos de inferência</strong> por participante. Rode agentes com mais de 40 mil modelos
+            open source, contexto de até 256K e API compatível com OpenAI.
           </p>
           <span className="prizes__more">+ novos benefícios conforme novos parceiros se juntarem</span>
         </div>

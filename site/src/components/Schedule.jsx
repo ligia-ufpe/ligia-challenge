@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import { EVENT } from '../config.js';
 import './Schedule.css';
 
-// Programação oficial, a mesma da página do evento no Luma.
+// Programação oficial, a mesma da apresentação de abertura e de src/tv/schedule.js.
 const DAYS = [
   {
     weekday: 'Sáb',
@@ -12,9 +12,12 @@ const DAYS = [
     label: 'Sábado, 7 de novembro de 2026',
     theme: 'Abertura & construção',
     items: [
-      ['08:30', 'Credenciamento & abertura', 'Check-in dos participantes e abertura oficial do evento.'],
-      ['10:30', 'Início do hacking', 'Os times começam a construir, com almoço e mentorias ao longo do dia.'],
-      ['17:00', 'Encerramento do 1º dia', 'Portas fecham. Amanhã tem mais construção.'],
+      ['08:30', 'Credenciamento e café da manhã', 'Check-in dos participantes, com café da manhã no local.'],
+      ['09:30', 'Abertura', 'Abertura oficial do evento, com as regras, o tema e os parceiros.'],
+      ['10:30', 'Início do hacking e rodadas de mentoria', 'Os times começam a construir, com os mentores circulando pelas mesas.'],
+      ['13:00', 'Almoço no local', 'Pausa para recarregar as energias.'],
+      ['14:00', 'Continuação do hacking', 'De volta à construção até o fim do dia.'],
+      ['17:00', 'Encerramento do dia', 'Portas fecham. Amanhã tem mais construção.'],
     ],
   },
   {
@@ -25,10 +28,14 @@ const DAYS = [
     label: 'Domingo, 8 de novembro de 2026',
     theme: 'Finalizar & Demo Day',
     items: [
-      ['08:30', 'Retomada do hacking', 'De volta à construção para a reta final.'],
-      ['13:00', 'Prazo de submissão', 'Último horário para enviar os projetos.'],
-      ['16:00', 'Demo Day', 'Os times apresentam ao vivo o que construíram para o júri.'],
-      ['17:30', 'Premiação & encerramento', 'Anúncio dos vencedores e encerramento oficial do evento.'],
+      ['08:30', 'Café da manhã', 'Portas abertas e café para começar o dia.'],
+      // The organizers only say "manhã" for this one, so it has no clock time.
+      ['Manhã', 'Hacking e rodadas de mentoria', 'De volta à construção para a reta final.'],
+      ['13:00', 'Prazo final de submissão', 'Último horário para enviar os projetos.'],
+      ['13:00', 'Almoço no local', 'Pausa depois da entrega.'],
+      ['14:00', 'Banca avalia os projetos e seleciona o top 5', 'Até as 16h, a banca analisa os projetos submetidos.'],
+      ['16:00', 'Pitch dos 5 finalistas', 'Demo Day: os finalistas apresentam ao vivo para a banca.'],
+      ['17:30', 'Premiação e encerramento', 'Anúncio dos vencedores e encerramento oficial do evento.'],
     ],
   },
 ];
@@ -97,7 +104,7 @@ export default function Schedule() {
               <ol className="schedule__items">
                 {d.items.map(([time, title, text]) => (
                   <li key={time + title} className="schedule__item">
-                    <time dateTime={`${d.date}T${time}-03:00`}>{time}</time>
+                    <time dateTime={/^\d/.test(time) ? `${d.date}T${time}-03:00` : d.date}>{time}</time>
                     <div>
                       <h4>{title}</h4>
                       <p>{text}</p>
