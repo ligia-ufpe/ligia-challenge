@@ -1,13 +1,12 @@
 import './Mentors.css';
 
-// Banca e mentores da página do evento no Luma. Pedro Kruta e Mônica do Carmo vêm do
-// e-mail da organização com o time da Tako. Novos nomes entram aqui.
+// Banca e mentores da apresentação de abertura. Novos nomes entram aqui.
 const MENTORS = [
   {
     name: 'Matheus Teixeira',
     role: (
       <>
-        Cofundador e associate da <strong>Canastra Ventures</strong>.
+        Founding Associate da <strong>Canastra Ventures</strong>.
       </>
     ),
     tags: ['Mentor', 'Jurado'],
