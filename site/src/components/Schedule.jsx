@@ -27,7 +27,7 @@ const DAYS = [
     items: [
       ['08:30', 'Retomada do hacking', 'De volta à construção para a reta final.'],
       ['13:00', 'Prazo de submissão', 'Último horário para enviar os projetos.'],
-      ['16:00', 'Demo Day', 'Os times apresentam ao vivo o que construíram para o júri.'],
+      ['16:30', 'Demo Day', 'Os times apresentam ao vivo o que construíram para o júri.'],
       ['17:30', 'Premiação & encerramento', 'Anúncio dos vencedores e encerramento oficial do evento.'],
     ],
   },

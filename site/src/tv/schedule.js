@@ -18,7 +18,7 @@ export const SECTIONS = [
   { start: '2026-11-08T09:30:00-03:00', title: 'Hacking e rodadas de mentoria' },
   { start: '2026-11-08T13:00:00-03:00', title: 'Almoço no local' },
   { start: '2026-11-08T14:00:00-03:00', title: 'Banca avalia os projetos e seleciona o top 5' },
-  { start: '2026-11-08T16:00:00-03:00', title: 'Pitch dos 5 finalistas' },
+  { start: '2026-11-08T16:30:00-03:00', title: 'Pitch dos 5 finalistas' },
   { start: '2026-11-08T17:30:00-03:00', title: 'Premiação e encerramento', open: true },
 ];
 
