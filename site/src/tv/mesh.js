@@ -36,7 +36,12 @@ export function createMesh(canvas) {
   const ctx = canvas.getContext('2d');
   let W = 0;
   let H = 0;
-  const paths = new Array(LEVELS);
+  // Dot positions per alpha level, as x, y pairs, reused every frame. Not a fresh
+  // Path2D per level per frame: their geometry lives outside the JS heap, so the
+  // garbage collector never felt the pressure and a TV tab grew by ~55 MB/s until
+  // Chrome ran out of memory.
+  const xy = Array.from({ length: LEVELS }, () => new Float32Array(8192));
+  const count = new Int32Array(LEVELS);
 
   return {
     resize(w, h, dpr) {
@@ -49,7 +54,7 @@ export function createMesh(canvas) {
 
     draw(t) {
       ctx.clearRect(0, 0, W, H);
-      for (let l = 0; l < LEVELS; l++) paths[l] = new Path2D();
+      count.fill(0);
       const gap = Math.max(9, H / 86);
       const step = Math.max(3, H / 320);
       const sway = H * 0.045;
@@ -70,14 +75,28 @@ export function createMesh(canvas) {
           const a = patch * edge * (0.05 + 0.32 * clamp01((crowd - 0.85) * 1.6));
           if (a < 0.004) continue;
           const l = Math.min(LEVELS - 1, ((a / MAX_ALPHA) * LEVELS) | 0);
-          paths[l].rect(x0 + sx * sway, y, dot, dot);
+          let buf = xy[l];
+          const i = count[l];
+          if (i + 2 > buf.length) {
+            buf = new Float32Array(buf.length * 2);
+            buf.set(xy[l]);
+            xy[l] = buf;
+          }
+          buf[i] = x0 + sx * sway;
+          buf[i + 1] = y;
+          count[l] = i + 2;
         }
       }
 
       ctx.fillStyle = 'rgb(214, 224, 255)';
       for (let l = 0; l < LEVELS; l++) {
+        const buf = xy[l];
+        const n = count[l];
+        if (!n) continue;
         ctx.globalAlpha = ((l + 0.6) / LEVELS) * MAX_ALPHA;
-        ctx.fill(paths[l]);
+        ctx.beginPath();
+        for (let i = 0; i < n; i += 2) ctx.rect(buf[i], buf[i + 1], dot, dot);
+        ctx.fill();
       }
       ctx.globalAlpha = 1;
     },
